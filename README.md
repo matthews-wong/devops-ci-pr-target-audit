@@ -25,3 +25,11 @@ A job is flagged when its workflow triggers on `pull_request_target` and an
 ## Validate
 
     make validate
+
+## Validation notes
+
+`make validate` runs the unit tests, `actionlint` and the audit against this
+repository's own workflows. The tests use the workflows in `tests/fixtures`.
+The audit is lexical: it matches expressions in `with.ref` and
+`with.repository`, and does not follow reusable workflows or `run:` steps that
+fetch the PR head with `git`.
